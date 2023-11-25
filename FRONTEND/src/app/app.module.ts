@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgxsModule } from '@ngxs/store';
 
 // Services
-import { ProduitService } from './produit.service';
+import { ProduitService } from '../services/produit.service';
 
 // Composants
 import { AppComponent } from './app.component';
