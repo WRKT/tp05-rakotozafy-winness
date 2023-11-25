@@ -1,0 +1,26 @@
+<app-search (motCle)="onMotCleChange($event)"></app-search>
+<table class="table borderless">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Catégorie</th>
+      <th>Prix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let filteredProduit of filteredProduits">
+      <td>{{ filteredProduit.id }}</td>
+      <td>{{ filteredProduit.nom }}</td>
+      <td>{{ filteredProduit.description }}</td>
+      <td>{{ filteredProduit.categorie }}</td>
+      <td>{{ filteredProduit.prix | currency : "EUR" }}</td>
+      <td>
+        <button (click)="addProduit(filteredProduit)" class="btn btn-dark">
+          Ajouter au Panier
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
