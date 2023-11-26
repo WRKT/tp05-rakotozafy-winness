@@ -1,6 +1,6 @@
 <div class="login-container col-md-4 mx-auto">
   <h2 class="text-center my-4">Page de connexion</h2>
-  <form>
+  <form (ngSubmit)="connexion()">
     <div class="form-group">
       <label for="username">Nom utilisateur</label>
       <input
@@ -20,7 +20,12 @@
       />
     </div>
     <div class="text-center">
-      <button type="submit" class="btn btn-dark mb-4">Se connecter</button>
+      <button class="btn btn-dark mb-4" type="submit">Se connecter</button>
     </div>
   </form>
 </div>
+
+<div *ngIf="connected" class="text-center mb-4">
+  Bonjour {{ nom }} - {{ prenom }}
+</div>
+

@@ -6,7 +6,7 @@ import { Produit } from '../app/shared/models/produit.model';
 import { environment } from '../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
   constructor(private http: HttpClient) {}
@@ -26,7 +26,7 @@ export class ApiService {
     );
   }
 
-  public getCalague(): Observable<Produit[]> {
+  getProduits(): Observable<Produit[]> {
     return this.http.get<Produit[]>(environment.backendCatalogue);
   }
 }
