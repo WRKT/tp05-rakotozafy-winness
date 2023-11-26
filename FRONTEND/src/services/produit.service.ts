@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Produit } from '../app/shared/models/produit.model';
-import { environment } from 'src/environments/environment.development';
+import { Produit } from 'src/app/shared/models/produit.model';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -13,7 +13,7 @@ export class ProduitService {
     constructor(private http:HttpClient) { }
       
     getProduits () : Observable<Produit[]> {
-      return this.http.get<Produit[]>(environment.backendClient);
+      return this.http.get<Produit[]>(environment.backendCatalogue);
     }
 
 }
