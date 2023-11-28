@@ -154,7 +154,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 	    $payload = getJWTToken($request);
 	    $login  = $payload->userid;
 	    
-		$flux = '{"nom":"skywalker","prenom":"emma"}';
+		$flux = '{"nom":"SKYWALKER","prenom":"Anakin"}';
 	    
 	    $response->getBody()->write($flux);
 	    
@@ -164,12 +164,20 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 	// APi d'authentification générant un JWT
 	function postLogin (Request $request, Response $response, $args) {   
 	    
-		// Verifiez l'entrée du body avec les bonnes données utilisateur emma/toto
-		$flux = '{"nom":"skywalker","prenom":"emma"}';
-	    
-	    $response = createJwT ($response);
-	    $response->getBody()->write($flux );
-	    
-	    return addHeaders ($response);
+		$body = $request->getParsedBody();
+		$identifiant = $body['identifiant'] ?? '';
+		$motDePasse = $body['motDePasse'] ?? '';
+
+		if ($identifiant !== 'emma' || $motDePasse !== 'toto') {
+			$response->getBody()->write('Identifiant ou mot de passe incorrect');
+			return $response->withStatus(401);
+		}
+											
+		$flux = '{"nom":"SKYWALKER","prenom":"Anakin"}';
+		   
+		$response = createJwT($response);
+		$response->getBody()->write($flux);
+		    
+		return addHeaders($response);
 	}
 

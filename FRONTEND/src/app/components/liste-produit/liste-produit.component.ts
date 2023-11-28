@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProduitService } from '../../../services/produit.service';
-import { Produit } from '../../shared/models/produit.model';
-import { AddProduit } from '../../shared/actions/panier-actions';
+import { ProduitService } from 'src/services/produit.service';
+import { Produit } from 'src/app/shared/models/produit.model';
+import { AddProduit } from 'src/app/shared/actions/panier-actions';
 import { Store } from '@ngxs/store';
 
 @Component({
@@ -32,7 +32,6 @@ export class ListeProduitComponent implements OnInit {
   }
  
   addProduit(produit: Produit) {
-    console.log(produit);
     this.store.dispatch(new AddProduit(produit));
   }
 }

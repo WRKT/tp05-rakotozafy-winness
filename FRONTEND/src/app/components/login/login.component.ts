@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/services/api.service';
+import { ProduitService } from 'src/services/produit.service';
 import { Produit } from 'src/app/shared/models/produit.model';
 
 @Component({
@@ -16,8 +17,8 @@ export class LoginComponent {
   connected!: boolean;
 
   produits$: Observable<Array<Produit>>;
-  constructor(private apiService: ApiService) {
-    this.produits$ = this.apiService.getProduits();
+  constructor(private produitService: ProduitService, private apiService: ApiService) {
+    this.produits$ = this.produitService.getProduits();
   }
 
   connexion() {
