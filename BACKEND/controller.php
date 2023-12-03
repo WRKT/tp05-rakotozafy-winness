@@ -164,20 +164,22 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 	// APi d'authentification générant un JWT
 	function postLogin (Request $request, Response $response, $args) {   
 	    
-		$body = $request->getParsedBody();
-		$identifiant = $body['identifiant'] ?? '';
-		$motDePasse = $body['motDePasse'] ?? '';
-
-		if ($identifiant !== 'emma' || $motDePasse !== 'toto') {
-			$response->getBody()->write('Identifiant ou mot de passe incorrect');
-			return $response->withStatus(401);
-		}
-											
 		$flux = '{"nom":"SKYWALKER","prenom":"Anakin"}';
-		   
-		$response = createJwT($response);
-		$response->getBody()->write($flux);
-		    
-		return addHeaders($response);
+		$body = $request->getParsedBody();
+		
+	    $login = $body['login'];
+	    $password = $body['password'];
+	    
+	    if ($login == "emma" && $password == "toto") 
+		{ 
+			$response = createJwT($response);
+			$response->getBody()->write($flux);
+	    }
+	    else 
+		{
+	        $response = $response->withStatus(401);
+	    }
+	    
+	    return addHeaders ($response);
 	}
 
