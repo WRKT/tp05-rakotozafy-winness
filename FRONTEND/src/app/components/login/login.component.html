@@ -29,7 +29,8 @@
   </form>
 </div>
 
-<div *ngIf="connected" class="text-center hello">
-  Hello there, {{ prenom }} {{ nom }} 👋 !
+<div *ngIf="connected" class="text-center">
+  <p class="hello">Hello there, {{ prenom }} {{ nom }} 👋 !</p>
+  <p class="mb-5">Visitez le catalogue en cliquant <a class="fw-bolder link-dark" [routerLink]="['/catalogue']">ICI</a></p>
 </div>
 
