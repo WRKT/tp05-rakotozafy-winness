@@ -1,4 +1,4 @@
-<div class="login-container col-md-4 mx-auto">
+<div *ngIf="!connected" class="login-container col-md-4 mx-auto">
   <h2 class="text-center my-4">Page de connexion</h2>
   <form (ngSubmit)="connexion()">
     <div class="form-group">
@@ -29,7 +29,7 @@
   </form>
 </div>
 
-<div *ngIf="connected" class="text-center mb-4">
+<div *ngIf="connected" class="text-center hello">
   Hello there, {{ prenom }} {{ nom }} 👋 !
 </div>
 
